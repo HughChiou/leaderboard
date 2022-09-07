@@ -1,0 +1,14 @@
+@property --score {
+    syntax: "<integer>";
+    initial-value: 0;
+    inherits: false;
+}
+
+.Score{
+    transition: --score .4s;
+    counter-set: num var(--score);
+}
+
+.Score::before{
+    content: counter(num);
+}

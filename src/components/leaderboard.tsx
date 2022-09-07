@@ -1,3 +1,4 @@
+import "./leaderboard.css";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 
@@ -12,6 +13,10 @@ interface RankingTableProps {
 
 interface PhotoProps {
   src: string;
+}
+
+interface ScoreProps {
+  score: number;
 }
 
 interface LeaderboardData {
@@ -56,6 +61,7 @@ const RankingRow = styled.div<RankingRowProps>`
   height: 3em;
   top: ${(props: any) => props.index * 3}em;
   transition: top 0.55s ease-in-out;
+  transition-delay: 0.5s;
 `;
 const DisplayName = styled.div`
   text-overflow: ellipsis;
@@ -63,8 +69,9 @@ const DisplayName = styled.div`
   white-space: nowrap;
   text-align: left;
 `;
-const Score = styled.div`
+const Score = styled.div<ScoreProps>`
   text-align: right;
+  --score: ${(props: any) => props.score};
 `;
 
 export function Leaderboard(props: LeaderboardProps) {
@@ -80,7 +87,7 @@ export function Leaderboard(props: LeaderboardProps) {
     const updated = rankingData
       .map((item) => {
         const addValue =
-          Math.random() > 0.3 ? Math.round(Math.random() * 1000) : 0;
+          Math.random() > 0.6 ? Math.round(Math.random() * 1000) : 0;
         item.score += addValue;
 
         return {
@@ -101,7 +108,9 @@ export function Leaderboard(props: LeaderboardProps) {
       <RankingTable>{idx + 1}</RankingTable>
       <Photo src={item.picture} alt={item.displayName} />
       <DisplayName title={item.displayName}>{item.displayName}</DisplayName>
-      <Score>{item.score}pt</Score>
+      <Score className="Score" score={item.score}>
+        pt
+      </Score>
     </RankingRow>
   ));
 
