@@ -15,8 +15,9 @@
     "styled-components": "5.3.5"
   },
   "devDependencies": {
-    "@types/react": "17.0.20",
-    "@types/react-dom": "17.0.9",
+    "@types/react": "^17.0.20",
+    "@types/react-dom": "^17.0.17",
+    "@types/styled-components": "^5.1.26",
     "typescript": "4.4.2"
   },
   "scripts": {
@@ -26,6 +27,7 @@
     "eject": "react-scripts eject"
   },
   "browserslist": [
+    "last 2 chrome versions",
     ">0.2%",
     "not dead",
     "not ie <= 11",

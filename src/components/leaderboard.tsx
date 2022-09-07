@@ -1,6 +1,5 @@
-import { useEffect, useState } from 'react';
-import styled from 'styled-components';
-import API from '../api';
+import { useEffect, useState } from "react";
+import styled from "styled-components";
 
 /* eslint-disable-next-line */
 export interface LeaderboardProps {
@@ -72,7 +71,7 @@ export function Leaderboard(props: LeaderboardProps) {
   const [rankingData, setRankingData] = useState<LeaderboardData[]>([]);
 
   useEffect(() => {
-    fetch('https://webcdn.17app.co/campaign/pretest/data.json')
+    fetch("https://webcdn.17app.co/campaign/pretest/data.json")
       .then((res) => res.json())
       .then((data) => setRankingData(data));
   }, []);
